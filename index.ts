@@ -1,2 +1,1 @@
-import { AwsResource } from './src/aws-resource';
-console.log(new AwsResource())
+export * from "./src/aws-resource";

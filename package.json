@@ -6,13 +6,19 @@
   "scripts": {
     "build": "tsc",
     "start": "ts-node index.ts",
+    "format": "npx prettier . --write",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "ionutpetre.ro@gmail.com",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^24.7.2",
+    "prettier": "3.6.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-appconfig": "^3.910.0",
+    "@aws-sdk/client-resource-groups-tagging-api": "^3.910.0"
   }
 }
