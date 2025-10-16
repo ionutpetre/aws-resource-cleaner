@@ -5,8 +5,8 @@ import {
 
 export class AwsResource {
   protected region: string;
-  protected resourceType?: string;
-  protected resourceTypes?: string;
+  protected resourceType: string = "";
+  protected resourceTypes: string[] = [];
   protected rgtClient: ResourceGroupsTaggingAPIClient;
 
   constructor({ region }: { region: string }) {
