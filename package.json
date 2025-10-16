@@ -32,6 +32,7 @@
     "@aws-sdk/client-secrets-manager": "^3.911.0",
     "@aws-sdk/client-sfn": "^3.911.0",
     "@aws-sdk/client-sns": "^3.911.0",
-    "@aws-sdk/client-sqs": "^3.911.0"
+    "@aws-sdk/client-sqs": "^3.911.0",
+    "@aws-sdk/client-ssm": "^3.911.0"
   }
 }
