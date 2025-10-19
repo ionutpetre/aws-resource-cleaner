@@ -1,6 +1,6 @@
 {
   "name": "aws-resource-cleaner",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "./dist/index.js",
   "scripts": {
@@ -8,6 +8,16 @@
     "start": "ts-node index.ts",
     "format": "npx prettier . --write",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "aws",
+    "aws-sdk",
+    "resource",
+    "cleaner"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ionutpetre/aws-resource-cleaner.git"
   },
   "author": "ionutpetre.ro@gmail.com",
   "license": "ISC",
