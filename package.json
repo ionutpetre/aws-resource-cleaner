@@ -1,13 +1,13 @@
 {
   "name": "aws-resource-cleaner",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "index.js",
   "bin": {
     "clean-aws-resource": "./index.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "node build.js",
     "start": "ts-node index.ts",
     "format": "npx prettier . --write",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -26,6 +26,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^24.7.2",
+    "esbuild": "^0.25.11",
     "prettier": "3.6.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
