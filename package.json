@@ -1,12 +1,11 @@
 {
   "name": "aws-resource-cleaner",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
-  "main": "./dist/index.js",
+  "main": "index.js",
   "bin": {
-    "clean-aws-resource": "./dist/index.js"
+    "clean-aws-resource": "./index.js"
   },
-  "type": "module",
   "scripts": {
     "build": "tsc",
     "start": "ts-node index.ts",
