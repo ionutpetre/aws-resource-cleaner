@@ -1,6 +1,7 @@
 import {
   ResourceGroupsTaggingAPIClient,
   GetResourcesCommand,
+  TagFilter,
 } from "@aws-sdk/client-resource-groups-tagging-api";
 
 export class AwsResource {
@@ -18,14 +19,20 @@ export class AwsResource {
   }
 
   private getResourceTypeFilters(): string[] {
-    let resourceTypeFilters: string[] = [];
-    if (this.resourceType) {
-      resourceTypeFilters.push(this.resourceType);
+    if (this.resourceType.length > 0) {
+      return [this.resourceType];
     }
     if (this.resourceTypes) {
-      resourceTypeFilters = [...this.resourceTypes];
+      return [...this.resourceTypes];
     }
-    return resourceTypeFilters;
+    return [];
+  }
+
+  private getTagFilters(tags: Record<string, string[]>): TagFilter[] {
+    return Object.entries(tags).map(([Key, Values]) => ({
+      Key,
+      Values,
+    }));
   }
 
   async getResourceArnsByTags(
@@ -36,10 +43,7 @@ export class AwsResource {
     do {
       const command: GetResourcesCommand = new GetResourcesCommand({
         ResourceTypeFilters: this.getResourceTypeFilters(),
-        TagFilters: Object.entries(tags).map(([Key, Values]) => ({
-          Key,
-          Values,
-        })),
+        TagFilters: this.getTagFilters(tags),
         PaginationToken: paginationToken,
       });
       const response = await this.rgtClient.send(command);
@@ -60,7 +64,7 @@ export class AwsResource {
     throw new Error("Method 'deleteResourceByArn()' must be implemented.");
   }
 
-  async deleteResourcesByTags(tags: Record<string, string[]>) {
+  async deleteResourcesByTags(tags: Record<string, string[]>): Promise<void> {
     const resourceArns = await this.getResourceArnsByTags(tags);
     for (const arn of resourceArns) {
       await this.deleteResourceByArn(arn);
