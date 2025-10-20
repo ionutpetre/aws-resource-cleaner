@@ -18,3 +18,8 @@ export function getResourceTypeArg() {
   const resourceArg = process.argv.find((arg) => arg.startsWith("resource="));
   return resourceArg ? resourceArg.split("=")[1] : "all";
 }
+
+export function isListModeArg() {
+  const listArg = process.argv.find((arg) => arg.startsWith("list="));
+  return listArg ? true : false;
+}
