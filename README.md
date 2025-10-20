@@ -24,6 +24,6 @@ npx aws-resource-cleaner tag-name="env" tag-value="test" resource=s3
 ## 💻 Programmatic Usage
 
 ```js
-import { getAwsResourcesByType } from "aws-resource-cleaner"
-await deleteAwsResources('s3',  { 'env': ['test'] });
+import { deleteAwsResources } from "aws-resource-cleaner"
+await deleteAwsResources('s3', { 'env': ['test'] });
 ```
