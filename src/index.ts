@@ -15,7 +15,27 @@ import { SNSResource } from "./sns";
 import { SQSResource } from "./sqs";
 import { SSMResource } from "./ssm";
 
-export function getAwsResourcesByType(resourceType: string): AwsResource[] {
+export type AwsResourceType =
+  | "sqs"
+  | "sns"
+  | "dynamodb"
+  | "s3"
+  | "ssm"
+  | "secretsmanager"
+  | "lambda"
+  | "sfn"
+  | "kms"
+  | "ecs"
+  | "ec2"
+  | "cognito-idp"
+  | "appconfig"
+  | "cloudwatch"
+  | "iam"
+  | "all";
+
+export function getAwsResourcesByType(
+  resourceType: AwsResourceType,
+): AwsResource[] {
   const region = process.env.AWS_REGION || "";
   const account = process.env.AWS_ACCOUNT_ID || "";
   const awsOptions = {
@@ -87,7 +107,7 @@ export function getAwsResourcesByType(resourceType: string): AwsResource[] {
 }
 
 export async function deleteAwsResources(
-  type: string,
+  type: AwsResourceType,
   tags: Record<string, string[]>,
 ): Promise<void> {
   const awsResources = getAwsResourcesByType(type);
@@ -101,7 +121,7 @@ export async function deleteAwsResources(
 }
 
 export async function listAwsResources(
-  type: string,
+  type: AwsResourceType,
   tags: Record<string, string[]>,
 ): Promise<void> {
   const awsResources = getAwsResourcesByType(type);

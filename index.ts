@@ -1,4 +1,5 @@
-import { deleteAwsResources, listAwsResources } from "./src";
+import { AwsResourceType, deleteAwsResources, listAwsResources } from "./src";
+export * from "./src";
 import {
   getTagNameArg,
   getTagValueArg,
@@ -12,9 +13,9 @@ async function main() {
   const tags = { [tagName]: [tagValue] };
   const resourceType = getResourceTypeArg();
   if (isListModeArg()) {
-    await listAwsResources(resourceType, tags);
+    await listAwsResources(resourceType as AwsResourceType, tags);
   } else {
-    await deleteAwsResources(resourceType, tags);
+    await deleteAwsResources(resourceType as AwsResourceType, tags);
   }
 }
 
