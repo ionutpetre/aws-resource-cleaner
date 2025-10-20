@@ -99,3 +99,20 @@ export async function deleteAwsResources(
     await service.deleteResourcesByTags(tags);
   }
 }
+
+export async function listAwsResources(
+  type: string,
+  tags: Record<string, string[]>,
+): Promise<void> {
+  const awsResources = getAwsResourcesByType(type);
+  if (awsResources.length === 0) {
+    console.log(`No AWS resource found for type: ${type}`);
+    return;
+  }
+  for (const service of awsResources) {
+    const resourceArns = await service.getResourceArnsByTags(tags);
+    if (resourceArns.length !== 0) {
+      console.log(resourceArns);
+    }
+  }
+}

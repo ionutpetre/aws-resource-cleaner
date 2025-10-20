@@ -1,4 +1,4 @@
-import { deleteAwsResources } from "./src";
+import { listAwsResources } from "./src";
 import { getTagNameArg, getTagValueArg, getResourceTypeArg } from "./args";
 
 async function main() {
@@ -6,7 +6,7 @@ async function main() {
   const tagValue = getTagValueArg();
   const tags = { [tagName]: [tagValue] };
   const resourceType = getResourceTypeArg();
-  await deleteAwsResources(resourceType, tags);
+  await listAwsResources(resourceType, tags);
 }
 
 main();
